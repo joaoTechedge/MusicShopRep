@@ -8,7 +8,8 @@ public class AlbumMusic {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id_album_music;
+	@Column(name = "id_album_music", nullable = false)
+	private Integer id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_music")
@@ -21,10 +22,10 @@ public class AlbumMusic {
 
 
 	public Integer getId_album_music() {
-		return id_album_music;
+		return id;
 	}
 	public void setId_album_music(Integer id_album_music) {
-		this.id_album_music = id_album_music;
+		this.id = id_album_music;
 	}
 	public Music getMusic() {
 		return music;

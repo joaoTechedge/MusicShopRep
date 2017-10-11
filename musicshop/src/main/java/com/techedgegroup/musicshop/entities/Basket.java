@@ -10,7 +10,8 @@ public class Basket {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id_basket;
+	@Column(name = "id_basket", nullable = false)
+	private Integer id;
 	private Date date_shop;
 	private String send_address1;
 	private String send_address2;
@@ -24,10 +25,10 @@ public class Basket {
 
 
 	public Integer getId_basket() {
-		return id_basket;
+		return id;
 	}
 	public void setId_basket(Integer id_basket) {
-		this.id_basket = id_basket;
+		this.id = id_basket;
 	}
 	public Date getDate_shop() {
 		return date_shop;

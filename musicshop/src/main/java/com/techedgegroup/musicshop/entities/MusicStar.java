@@ -8,7 +8,8 @@ public class MusicStar {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id_music_star;
+	@Column(name = "id_music_star", nullable = false)
+	private Integer id;
 	
 	private Integer contribution;
 	
@@ -22,11 +23,11 @@ public class MusicStar {
 
 	
 	public Integer getId_music_star() {
-		return id_music_star;
+		return id;
 	}
 
 	public void setId_music_star(Integer id_music_star) {
-		this.id_music_star = id_music_star;
+		this.id = id_music_star;
 	}
 
 	public Integer getContribution() {

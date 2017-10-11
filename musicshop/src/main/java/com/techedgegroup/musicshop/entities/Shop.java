@@ -12,7 +12,8 @@ public class Shop {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id_shop;
+	@Column(name = "id_shop", nullable = false)
+	private Integer id;
 	private String name_shop;
 	private String place;
 	
@@ -29,10 +30,10 @@ public class Shop {
 
 
 	public Integer getId_shop() {
-		return id_shop;
+		return id;
 	}
 	public void setId_shop(Integer id_shop) {
-		this.id_shop = id_shop;
+		this.id = id_shop;
 	}
 	public String getName_shop() {
 		return name_shop;
