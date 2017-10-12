@@ -1,6 +1,6 @@
 'use strict';
  
-angular.module('musicShop').controller('AlbumController', ['$http', '$scope', 'AlbumService', function($http, $scope, AlbumService) {
+angular.module('musicShop').controller('AlbumController', ['$http', '$scope', '$location','AlbumService', function($http, $scope, $location,AlbumService) {
     var self = this;
     
     self.albuns = [];
@@ -25,6 +25,10 @@ angular.module('musicShop').controller('AlbumController', ['$http', '$scope', 'A
     	.then(function(data){
     		self.albuns = data;
     	});
+    }
+    
+    $scope.gotomusic = function(){
+    	$location.path('/music');
     }
  
 }]);

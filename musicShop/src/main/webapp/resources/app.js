@@ -7,12 +7,18 @@
 var app = angular.module('musicShop', ['ngRoute']);
 
 app.config(function($routeProvider) {
-    $routeProvider
+	$routeProvider
+	// route for the home page
+	.when('/', {
+		templateUrl : 'resources/album/view/album.html',
+		controller  : 'AlbumController'
+	})
 
-    // route for the home page
-    .when('/', {
-        templateUrl : 'resources/album/view/album.html',
-        controller  : 'AlbumController'
-    })
+	// route for the music page
+	.when('/music', {
+		templateUrl : 'resources/music/view/music.html',
+		controller  : 'MusicController'
+	});
+
 
 });

@@ -1,7 +1,14 @@
 package com.techedgegroup.musicshop.DTO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+
+import com.techedgegroup.musicshop.entities.AlbumMusic;
+import com.techedgegroup.musicshop.entities.Music;
+import com.techedgegroup.musicshop.entities.MusicStar;
 
 public class MusicDTO implements Serializable {
 
@@ -67,6 +74,34 @@ public class MusicDTO implements Serializable {
 		this.listOfMusicStar = listOfMusicStar;
 	}
 
+	public MusicDTO convertFromEntity(Music musicEntity) {
+		
+		MusicDTO converted = new MusicDTO();
+		converted.setDuraction(musicEntity.getDuraction());
+		converted.setId_music(musicEntity.getId_music());
+		List<AlbumMusicDTO> convertedAlbumMusic = new ArrayList<>();
+		for(AlbumMusic alb : musicEntity.getListOfAlbumMusic()) {
+			AlbumMusicDTO albDTO = new AlbumMusicDTO();
+			BeanUtils.copyProperties(alb, albDTO);
+			convertedAlbumMusic.add(albDTO);
+		}
+		converted.setListOfAlbumMusic(convertedAlbumMusic);
+		
+		List<MusicStarDTO> convertedMusicStar = new ArrayList<>();
+		for(MusicStar alb : musicEntity.getListOfMusicStar()) {
+			MusicStarDTO albDTO = new MusicStarDTO();
+			BeanUtils.copyProperties(alb, albDTO);
+			convertedMusicStar.add(albDTO);
+		}
+		converted.setListOfMusicStar(convertedMusicStar);
+		
+		converted.setName_music(musicEntity.getName_music());
+		converted.setPublisher(musicEntity.getPublisher());
+		converted.setStyle_music(musicEntity.getStyle_music());
+		converted.setYear(musicEntity.getYear());
+		
+		return converted;
+	}
 	
 	
 }

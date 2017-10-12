@@ -1,11 +1,9 @@
-<div class="generic-container" ng-controller="AlbumController as ctrl"	
-	data-ng-init="getAlbuns()">
-	
-	<button ng-click="gotomusic()">Go to music</button>
+<div class="generic-container" ng-controller="MusicController as ctrl"
+	data-ng-init="getMusic()">
 	<div class="panel panel-default">
 		<!-- Default panel contents -->
 		<div class="panel-heading">
-			<span class="lead">Lista de Albuns</span>
+			<span class="lead">Lista de Musicas</span>
 		</div>
 		<div class="panel-heading">
 			<label>Ordenar por: </label> <select ng-model="criteria.columnName"
@@ -26,11 +24,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="a in ctrl.albuns">
-						<td><span ng-bind="a.name_album	"></span></td>
-						<td><span ng-bind="a.publisher"></span></td>
-						<td><span ng-bind="a.style"></span></td>
-						<td><span ng-bind="a.year"></span></td>
+					<tr ng-repeat="m in ctrl.music">
+						<td><span ng-bind="m.name_music	"></span></td>
+						<td><span ng-bind="m.publisher"></span></td>
+						<td><span ng-bind="m.style_music"></span></td>
+						<td><span ng-bind="m.year"></span></td>
+						<td><span ng-bind="m.duraction"></span></td>
 					</tr>
 				</tbody>
 			</table>
