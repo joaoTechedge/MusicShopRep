@@ -1,72 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>TRETAS</title>
 <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.css">
-<link rel="stylesheet"
-	href="webjars/bootstrap/3.3.7/css/bootstrap-jsf.css">
-<link rel="stylesheet"
-	href="webjars/bootstrap/3.3.7/css/bootstrap-theme.css">
-<link rel="stylesheet"
-	href="webjars/bootstrap/3.3.7/css/bootstrap-theme-jsf.css">
+<link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap-jsf.css">
+<link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap-theme.css">
+<link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap-theme-jsf.css">
 <script type="text/javascript" src="webjars/jquery/3.2.1/jquery.js"></script>
-<script type="text/javascript"
-	src="webjars/angularjs/1.6.4/angular.min.js"></script>
-<script type="text/javascript"
-	src="webjars/angularjs/1.6.4/angular-resource.min.js"></script>
-<script type="text/javascript"
-	src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="webjars/angularjs/1.6.4/angular.min.js"></script>
+<script type="text/javascript" src="webjars/angularjs/1.6.4/angular-route.js"></script>
+<script type="text/javascript" src="webjars/angularjs/1.6.4/angular-resource.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/app.js"></script>
-<script type="text/javascript"
-	src="resources/home/controller/home_controller.js"></script>
-<script type="text/javascript"
-	src="resources/home/services/home_controller_services.js"></script>
+<script type="text/javascript" src="resources/album/controller/album_controller.js"></script>
+<script type="text/javascript" src="resources/album/services/album_controller_services.js"></script>
 </head>
 <body ng-app="musicShop" class="ng-cloak">
-	<div class="generic-container" ng-controller="AlbumController as ctrl"
-		data-ng-init="getAlbuns()">
-		<div class="panel panel-default">
-			<!-- Default panel contents -->
-			<div class="Right">
-				<button class="LoginButton">Login</button>
-			</div>
-			
-			<div class="panel-heading">
-				<span class="lead">Lista de Albuns</span>
-			</div>
-			<div class="panel-heading">
-				<label>Ordenar por: </label>
-				 <select ng-model="criteria.columnName"
-					ng-options="header.value as header.name for header in ctrl.columnsNVP">
-				</select>
-				<label> Direcão: </label>
-				<select ng-model="criteria.direction"
-					ng-options="dir for dir in ctrl.direction">
-				</select>
-				<label> Texto a pesquisar: </label>
-				<input type="text" ng-model="criteria.textToSearch"></text>
-				<button ng-click="orderByField(criteria)">Avançar</button>
-			</div>
-			<div class="tablecontainer">
-				<table ng-table="albunsTable"
-					class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th ng-repeat="header in ctrl.headers">{{header}}</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="a in ctrl.albuns">
-							<td><span ng-bind="a.name_album	"></span></td>
-							<td><span ng-bind="a.publisher"></span></td>
-							<td><span ng-bind="a.style"></span></td>
-							<td><span ng-bind="a.year"></span></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
+
+	<div id="main">
+	<div ng-view></div>
 	</div>
 
 </body>
