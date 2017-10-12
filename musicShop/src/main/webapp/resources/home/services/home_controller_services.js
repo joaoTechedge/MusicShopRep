@@ -12,15 +12,18 @@ angular.module('musicShop').factory('AlbumService', ['$http', '$q', function($ht
 						return response.data;
 					},
 					function(errResponse){
-						console.log(response);
+						console.log(errResponse);
 					}
 			);
 
+		},
+		fetchAllAlbunsOrdered : function(criteria){
+			return $http.post(REST_SERVICE_URI+"/rest/album/getAlbunsFiltered", criteria)
+			.then(function (response) {
+				return response.data;
+			});
 		}
 	}
-
-
-
 
 
 }]);
