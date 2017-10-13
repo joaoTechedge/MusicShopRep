@@ -1,6 +1,6 @@
 'use strict';
  
-angular.module('musicShop').controller('MusicController', ['$http', '$scope', 'MusicService', function($http, $scope, MusicService) {
+angular.module('musicShop').controller('MusicController', ['$http', '$scope', '$location', 'MusicService', function($http, $scope, $location, MusicService) {
     var self = this;
     
     self.music = [];
@@ -28,4 +28,7 @@ angular.module('musicShop').controller('MusicController', ['$http', '$scope', 'M
     	});
     }
  
+    $scope.gotoalbum = function(){
+    	$location.path('/');
+    }
 }]);

@@ -13,12 +13,13 @@ app.config(function($routeProvider) {
 		templateUrl : 'resources/album/view/album.html',
 		controller  : 'AlbumController'
 	})
-
 	// route for the music page
 	.when('/music', {
 		templateUrl : 'resources/music/view/music.html',
 		controller  : 'MusicController'
 	});
-
+	
 
 });
+
+
