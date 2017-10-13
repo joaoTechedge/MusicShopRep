@@ -30,5 +30,9 @@ angular.module('musicShop').controller('AlbumController', ['$http', '$scope', '$
     $scope.gotomusic = function(){
     	$location.path('/music');
     }
+    
+    $scope.gotostar = function(){
+    	$location.path('/star');
+    }
  
 }]);

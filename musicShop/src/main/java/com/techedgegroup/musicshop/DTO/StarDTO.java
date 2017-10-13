@@ -1,7 +1,13 @@
 package com.techedgegroup.musicshop.DTO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+
+import com.techedgegroup.musicshop.entities.MusicStar;
+import com.techedgegroup.musicshop.entities.Star;
 
 
 public class StarDTO implements Serializable{
@@ -46,5 +52,25 @@ public class StarDTO implements Serializable{
 		this.listOfMusicStar = listOfMusicStar;
 	}
 
+	public StarDTO convertFromEntity(Star starEntity) {
+
+		StarDTO converted = new StarDTO();
+		converted.setId_star(starEntity.getId_star());
+		converted.setGender(starEntity.getGender());
+		converted.setName_star(starEntity.getName_star());
+		converted.setName_star_professional(starEntity.getName_star_professional());
+		
+		converted.setListOfMusicStar(listOfMusicStar);
+		List<MusicStarDTO> convertedMusicStar = new ArrayList<>();
+		for(MusicStar mst : starEntity.getListOfMusicStar()) {
+			MusicStarDTO mstDTO = new MusicStarDTO();
+			BeanUtils.copyProperties(mst, mstDTO);
+			convertedMusicStar.add(mstDTO);
+		}
+		converted.setListOfMusicStar(convertedMusicStar);
+
+		return converted;
+
+	}
 
 }
