@@ -5,6 +5,7 @@ angular.module('musicShop').controller('AlbumController', ['$http', '$scope', '$
     
     self.albuns = [];
     self.headers = ['Nome', 'Editora', 'Estilo', 'Ano'];
+    self.headersMus = ['Música (Nome)', 'Editora', 'Estilo', 'Ano', 'Duração'];
     self.columnsNVP = [];
     self.columnsNVP.push({name:'Nome',value:'name_album'});
     self.columnsNVP.push({name:'Editora',value:'publisher'});
@@ -36,3 +37,14 @@ angular.module('musicShop').controller('AlbumController', ['$http', '$scope', '$
     }
  
 }]);
+
+angular.module('musicShop').controller('RowCtrl', function ($scope) {
+
+    $scope.toggleRow = function () {
+      $scope.selected = !$scope.selected;
+    };
+
+    $scope.isSelected = function (i) {
+      return $scope.selected;
+    };
+});

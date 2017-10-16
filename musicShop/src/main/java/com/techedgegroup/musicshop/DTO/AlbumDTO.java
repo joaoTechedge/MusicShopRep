@@ -7,9 +7,8 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 
 import com.techedgegroup.musicshop.entities.Album;
-import com.techedgegroup.musicshop.entities.AlbumBasket;
 import com.techedgegroup.musicshop.entities.AlbumMusic;
-import com.techedgegroup.musicshop.entities.ShopAlbum;
+import com.techedgegroup.musicshop.entities.Music;
 
 
 public class AlbumDTO implements Serializable {
@@ -25,10 +24,6 @@ public class AlbumDTO implements Serializable {
 	private String publisher;
 	
 	private Integer year;	
-
-	private List<AlbumBasketDTO> listOfAlbumBasket;
-
-	private List<ShopAlbumDTO> listOfShopAlbum;
 
 	private List<AlbumMusicDTO> listOfAlbumMusic;
 
@@ -62,18 +57,6 @@ public class AlbumDTO implements Serializable {
 	public void setYear(Integer year) {
 		this.year = year;
 	}
-	public List<AlbumBasketDTO> getListOfAlbumBasket() {
-		return listOfAlbumBasket;
-	}
-	public void setListOfAlbumBasket(List<AlbumBasketDTO> listOfAlbumBasket) {
-		this.listOfAlbumBasket = listOfAlbumBasket;
-	}
-	public List<ShopAlbumDTO> getListOfShopAlbum() {
-		return listOfShopAlbum;
-	}
-	public void setListOfShopAlbum(List<ShopAlbumDTO> listOfShopAlbum) {
-		this.listOfShopAlbum = listOfShopAlbum;
-	}
 	public List<AlbumMusicDTO> getListOfAlbumMusic() {
 		return listOfAlbumMusic;
 	}
@@ -85,29 +68,17 @@ public class AlbumDTO implements Serializable {
 		
 		AlbumDTO converted = new AlbumDTO();
 		converted.setId_album(albumEntity.getId_album());
-		List<AlbumBasketDTO> convertedAlbumBasket = new ArrayList<>();
-		for(AlbumBasket alb : albumEntity.getListOfAlbumBasket()) {
-			AlbumBasketDTO albDTO = new AlbumBasketDTO();
-			BeanUtils.copyProperties(alb, albDTO);
-			convertedAlbumBasket.add(albDTO);
-		}
-		converted.setListOfAlbumBasket(convertedAlbumBasket);
+		
 		
 		List<AlbumMusicDTO> convertedAlbumMusic = new ArrayList<>();
 		for(AlbumMusic alb : albumEntity.getListOfAlbumMusic()) {
+			Music music = alb.getMusic();
 			AlbumMusicDTO albDTO = new AlbumMusicDTO();
-			BeanUtils.copyProperties(alb, albDTO);
+			BeanUtils.copyProperties(music, albDTO);
 			convertedAlbumMusic.add(albDTO);
 		}
 		converted.setListOfAlbumMusic(convertedAlbumMusic);
 		
-		List<ShopAlbumDTO> convertedShopAlbum = new ArrayList<>();
-		for(ShopAlbum alb : albumEntity.getListOfShopAlbum()) {
-			ShopAlbumDTO albDTO = new ShopAlbumDTO();
-			BeanUtils.copyProperties(alb, albDTO);
-			convertedShopAlbum.add(albDTO);
-		}
-		converted.setListOfShopAlbum(convertedShopAlbum);
 		
 		converted.setName_album(albumEntity.getName_album());
 		converted.setPublisher(albumEntity.getPublisher());

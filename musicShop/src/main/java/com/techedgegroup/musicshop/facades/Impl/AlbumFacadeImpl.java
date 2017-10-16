@@ -19,7 +19,7 @@ public class AlbumFacadeImpl implements AlbumFacade {
 
 	@Autowired
 	private AlbumDAO albumDAO;
-
+	
 	@Override
 	public List<AlbumDTO> getAlbumList() {
 		List<Album> albumEntitys = (List<Album>) albumDAO.findAll();
@@ -55,7 +55,7 @@ public class AlbumFacadeImpl implements AlbumFacade {
 			return new Sort(Direction.ASC, columnName);
 		}
 	}
-	
-	
+
+		
 
 }

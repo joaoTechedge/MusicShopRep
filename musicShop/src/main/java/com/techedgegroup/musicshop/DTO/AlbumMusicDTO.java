@@ -7,30 +7,50 @@ public class AlbumMusicDTO implements Serializable{
 	private static final long serialVersionUID = -6842527008504370099L;
 
 	private Integer id;
-
-	private MusicDTO music;
-
-	private AlbumDTO album;
-
-	public Integer getId_album_music() {
+	private String name_music;
+	private String style_music;
+	private double duraction;
+	private String publisher;
+	private Integer year;
+	
+	public Integer getId() {
 		return id;
 	}
-	public void setId_album_music(Integer id_album_music) {
-		this.id = id_album_music;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public MusicDTO getMusic() {
-		return music;
+	public String getName_music() {
+		return name_music;
 	}
-	public void setMusic(MusicDTO music) {
-		this.music = music;
+	public void setName_music(String name_music) {
+		this.name_music = name_music;
 	}
-	public AlbumDTO getAlbum() {
-		return album;
+	public String getStyle_music() {
+		return style_music;
 	}
-	public void setAlbum(AlbumDTO album) {
-		this.album = album;
+	public void setStyle_music(String style_music) {
+		this.style_music = style_music;
 	}
-
+	public double getDuraction() {
+		return duraction;
+	}
+	public void setDuraction(double duraction) {
+		this.duraction = duraction;
+	}
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+	public Integer getYear() {
+		return year;
+	}
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+	
+	
 
 
 }

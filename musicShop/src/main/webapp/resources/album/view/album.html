@@ -1,20 +1,23 @@
-<div class="generic-container" ng-controller="AlbumController as ctrl"	
+<div class="generic-container" ng-controller="AlbumController as ctrl"
 	data-ng-init="getAlbuns()">
-	
-		<!-- NavBar -->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="" >Album <span class="sr-only">(current)</span></a></li>
-        <li><a href="" ng-click="gotomusic()">Musica</a></li>
-        <li><a href="" ng-click="gotostar()">Estrela</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-<!-- navBar end -->
+
+	<!-- NavBar -->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="">Album <span class="sr-only">(current)</span></a></li>
+					<li><a href="" ng-click="gotomusic()">Musica</a></li>
+					<li><a href="" ng-click="gotostar()">Estrela</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	<!-- navBar end -->
 
 	<div class="panel panel-default">
 		<!-- Default panel contents -->
@@ -26,8 +29,8 @@
 				ng-options="header.value as header.name for header in ctrl.columnsNVP">
 			</select> <label> Direcão: </label> <select ng-model="criteria.direction"
 				ng-options="dir for dir in ctrl.direction">
-			</select> <label> Texto a pesquisar: </label>
-			 <input type="text"	ng-model="criteria.textToSearch"></input>
+			</select> <label> Texto a pesquisar: </label> <input type="text"
+				ng-model="criteria.textToSearch"></input>
 			<button ng-click="orderByField(criteria)">Avançar</button>
 		</div>
 		<div class="tablecontainer">
@@ -38,12 +41,35 @@
 						<th ng-repeat="header in ctrl.headers">{{header}}</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr ng-repeat="a in ctrl.albuns">
-						<td><span ng-bind="a.name_album	"></span></td>
-						<td><span ng-bind="a.publisher"></span></td>
-						<td><span ng-bind="a.style"></span></td>
-						<td><span ng-bind="a.year"></span></td>
+				<tbody ng-repeat="a in ctrl.albuns"
+				ng-controller="RowCtrl" 
+                 ng-click="toggleRow()" 
+                 ng-switch on="isSelected()">
+					<tr>
+						<td><a href=""><span ng-bind="a.name_album	"></span></a></td>
+						<td><a href=""><span ng-bind="a.publisher"></span></a></td>
+						<td><a href=""><span ng-bind="a.style"></span></a></td>
+						<td><a href=""><span ng-bind="a.year"></span></a></td>
+					</tr>
+					<tr ng-switch-when="true">
+						<td colspan="4">
+							<table class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th ng-repeat="headermus in ctrl.headersMus">{{headermus}}</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="m in a.listOfAlbumMusic">
+										<td><span ng-bind="m.name_music"></span></td>
+										<td><span ng-bind="m.publisher"></span></td>
+										<td><span ng-bind="m.style_music"></span></td>
+										<td><span ng-bind="m.year"></span></td>
+										<td><span ng-bind="m.duraction"></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
 					</tr>
 				</tbody>
 			</table>
