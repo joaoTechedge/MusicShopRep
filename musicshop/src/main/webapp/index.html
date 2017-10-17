@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="musicShop">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>TRETAS</title>
 <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.css">
 <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap-jsf.css">
@@ -9,15 +9,23 @@
 <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap-theme-jsf.css">
 <script type="text/javascript" src="webjars/jquery/3.2.1/jquery.js"></script>
 <script type="text/javascript" src="webjars/angularjs/1.6.4/angular.min.js"></script>
+<script type="text/javascript" src="webjars/angularjs/1.6.4/angular-route.js"></script>
 <script type="text/javascript" src="webjars/angularjs/1.6.4/angular-resource.min.js"></script>
 <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/app.js"></script>
+<script type="text/javascript" src="resources/album/controller/album_controller.js"></script>
+<script type="text/javascript" src="resources/album/services/album_controller_services.js"></script>
+<script type="text/javascript" src="resources/music/controller/music_controller.js"></script>
+<script type="text/javascript" src="resources/music/services/music_controller_services.js"></script>
+<script type="text/javascript" src="resources/star/controller/star_controller.js"></script>
+<script type="text/javascript" src="resources/star/services/star_controller_services.js"></script>
 </head>
-<body>
-	<div class="container">
-		<h2>Basic Panel</h2>
-		<div class="panel panel-default">
-			<div class="panel-body">A Basic Panel</div>
-		</div>
+</head>
+<body ng-app="musicShop" class="ng-cloak">
+
+	<div id="main">
+	<div ng-view></div>
 	</div>
+
 </body>
 </html>

@@ -10,7 +10,8 @@ public class TechUser {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id_user;
+	@Column(name = "id_user", nullable = false)
+	private Integer id;
 	private String name_user;
 	private Integer nif;
 	private String addressLine1;
@@ -31,10 +32,10 @@ public class TechUser {
 	private List<Basket> listOfBasket;
 
 	public Integer getId_user() {
-		return id_user;
+		return id;
 	}
 	public void setId_user(Integer id_user) {
-		this.id_user = id_user;
+		this.id = id_user;
 	}
 	public String getName_user() {
 		return name_user;

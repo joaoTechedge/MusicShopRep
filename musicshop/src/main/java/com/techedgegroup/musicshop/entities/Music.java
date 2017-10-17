@@ -10,7 +10,8 @@ public class Music {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id_music;
+	@Column(name = "id_music", nullable = false)
+	private Integer id;
 	private String name_music;
 	private String style_music;
 	private double duraction;
@@ -25,10 +26,10 @@ public class Music {
 
 
 	public Integer getId_music() {
-		return id_music;
+		return id;
 	}
 	public void setId_music(Integer id_music) {
-		this.id_music = id_music;
+		this.id = id_music;
 	}
 	public String getName_music() {
 		return name_music;

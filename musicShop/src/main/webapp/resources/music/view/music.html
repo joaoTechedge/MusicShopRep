@@ -1,0 +1,54 @@
+<div class="generic-container" ng-controller="MusicController as ctrl"
+	data-ng-init="getMusic()">
+	
+			<!-- NavBar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">        
+        <li><a href="" ng-click="gotoalbum()">Album</a></li>
+        <li class="active"><a href="">Musica <span class="sr-only">(current)</span></a></li>
+        <li><a href="" ng-click="gotostar()">Estrela</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- navBar end -->
+	
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<span class="lead">Lista de Musicas</span>
+		</div>
+		<div class="panel-heading">
+			<label>Ordenar por: </label> <select ng-model="criteria.columnName"
+				ng-options="header.value as header.name for header in ctrl.columnsNVP">
+			</select> <label> Direcão: </label> <select ng-model="criteria.direction"
+				ng-options="dir for dir in ctrl.direction">
+			</select> <label> Texto a pesquisar: </label> <input type="text"
+				ng-model="criteria.textToSearch">
+			</text>
+			<button ng-click="orderByField(criteria)">Avançar</button>
+		</div>
+		<div class="tablecontainer">
+			<table ng-table="albunsTable"
+				class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th ng-repeat="header in ctrl.headers">{{header}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="m in ctrl.music">
+						<td><span ng-bind="m.name_music	"></span></td>
+						<td><span ng-bind="m.publisher"></span></td>
+						<td><span ng-bind="m.style_music"></span></td>
+						<td><span ng-bind="m.year"></span></td>
+						<td><span ng-bind="m.duraction"></span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

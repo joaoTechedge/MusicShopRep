@@ -8,8 +8,10 @@ public class ShopAlbum {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id_shop_album;
-	private boolean isAvaiable;
+	@Column(name = "id_shop_album", nullable = false)
+	private Integer id;
+	
+	private boolean available;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_shop")
@@ -18,21 +20,12 @@ public class ShopAlbum {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_album")
 	private Album album;
-	
-	
-	
+		
 	public Integer getId_shop_album() {
-		return id_shop_album;
+		return id;
 	}
 	public void setId_shop_album(Integer id_shop_album) {
-		this.id_shop_album = id_shop_album;
-	}
-
-	public boolean isAvaiable() {
-		return isAvaiable;
-	}
-	public void setAvaiable(boolean isAvaiable) {
-		this.isAvaiable = isAvaiable;
+		this.id = id_shop_album;
 	}
 	public Shop getShop() {
 		return shop;
@@ -45,6 +38,12 @@ public class ShopAlbum {
 	}
 	public void setAlbum(Album album) {
 		this.album = album;
+	}
+	public boolean isAvailable() {
+		return available;
+	}
+	public void setAvailable(boolean available) {
+		this.available = available;
 	}
 	
 	

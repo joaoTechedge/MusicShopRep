@@ -1,5 +1,6 @@
 package com.techedgegroup.musicshop.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,8 @@ public class AlbumBasket {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id_album_basket;
+	@Column(name = "id_album_basket", nullable = false)
+	private Integer id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_basket")
@@ -28,10 +30,10 @@ public class AlbumBasket {
 	
 	
 	public Integer getId_album_basket() {
-		return id_album_basket;
+		return id;
 	}
 	public void setId_album_basket(Integer id_album_basket) {
-		this.id_album_basket = id_album_basket;
+		this.id = id_album_basket;
 	}
 	
 

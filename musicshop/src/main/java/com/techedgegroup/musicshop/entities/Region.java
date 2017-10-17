@@ -11,7 +11,8 @@ public class Region {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id_region;
+	@Column(name = "id_region", nullable = false)
+	private Integer id;
 	private String name_region;
 
 	@ManyToOne
@@ -22,10 +23,10 @@ public class Region {
 	private List<Shop> listOfShop  ;
 
 	public Integer getId_region() {
-		return id_region;
+		return id;
 	}
 	public void setId_region(Integer id_region) {
-		this.id_region = id_region;
+		this.id = id_region;
 	}
 	public String getName_region() {
 		return name_region;

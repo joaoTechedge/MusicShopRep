@@ -10,13 +10,16 @@ public class Album {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id_album;
+	@Column(name = "id_album", nullable = false)
+	private Integer id;
 	private String name_album;
 	private String style;
 	private String publisher;
-	private Integer year;
+	private Integer year;	
 	
-    @OneToMany(mappedBy="album", targetEntity=AlbumBasket.class)
+
+    
+	@OneToMany(mappedBy="album", targetEntity=AlbumBasket.class)
     private List<AlbumBasket> listOfAlbumBasket;
 
     @OneToMany(mappedBy="album", targetEntity=ShopAlbum.class)
@@ -27,10 +30,10 @@ public class Album {
 	
 
 	public Integer getId_album() {
-		return id_album;
+		return id;
 	}
 	public void setId_album(Integer id_album) {
-		this.id_album = id_album;
+		this.id = id_album;
 	}
 	public String getName_album() {
 		return name_album;

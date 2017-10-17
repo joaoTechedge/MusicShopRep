@@ -10,7 +10,8 @@ public class Star {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id_star;
+	@Column(name = "id_star", nullable = false)
+	private Integer id;
 	private String name_star;
 	private String name_star_professional;
 	private char gender;
@@ -20,10 +21,10 @@ public class Star {
 
 
 	public Integer getId_star() {
-		return id_star;
+		return id;
 	}
 	public void setId_star(Integer id_star) {
-		this.id_star = id_star;
+		this.id = id_star;
 	}
 	public String getName_star() {
 		return name_star;
