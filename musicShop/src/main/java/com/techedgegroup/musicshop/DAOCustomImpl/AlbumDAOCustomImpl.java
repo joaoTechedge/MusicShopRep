@@ -4,5 +4,4 @@ import com.techedgegroup.musicshop.DAOCustom.AlbumDAOCustom;
 
 public class AlbumDAOCustomImpl implements AlbumDAOCustom{
 
-
 }
