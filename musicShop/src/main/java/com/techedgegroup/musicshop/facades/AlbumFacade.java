@@ -13,5 +13,10 @@ public interface AlbumFacade {
 	public List<AlbumDTO> getAlbumList();
 
 	public List<AlbumDTO> getAlbumListFiltered(AlbumCriteriaDTO dto);
+	
+	public String createAlbum(AlbumDTO albumDTO);
 
+	public String updateAlbum(AlbumDTO albumDTO);
+	
+	public String deleteAlbum(AlbumDTO albumDTO);
 }

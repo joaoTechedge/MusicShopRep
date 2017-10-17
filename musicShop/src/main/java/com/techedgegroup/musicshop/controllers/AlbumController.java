@@ -23,15 +23,26 @@ public class AlbumController {
 	@RequestMapping(value="/getAlbuns",  method=RequestMethod.GET)	
 	public List<AlbumDTO> listaAlbum(){
 		return albumFacade.getAlbumList();
-		
 	}
 	
 	@RequestMapping(value="/getAlbunsFiltered",  method=RequestMethod.POST)	
-	public List<AlbumDTO> listaAlbumFiltered( @RequestBody AlbumCriteriaDTO dto){
-		
-		
+	public List<AlbumDTO> listaAlbumFiltered(@RequestBody AlbumCriteriaDTO dto){
 		return albumFacade.getAlbumListFiltered(dto);
-		
+	}
+	
+	@RequestMapping(value="/createAlbum",  method=RequestMethod.POST)
+	public String createAlbum(@RequestBody AlbumDTO albumDTO) {
+		return albumFacade.createAlbum(albumDTO);
+	}
+	
+	@RequestMapping(value="/updateAlbum",  method=RequestMethod.POST)
+	public String updateAlbum(@RequestBody AlbumDTO albumDTO) {
+		return albumFacade.updateAlbum(albumDTO);
+	}
+	
+	@RequestMapping(value="/deleteAlbum",  method=RequestMethod.POST)
+	public String deleteAlbum(@RequestBody AlbumDTO albumDTO) {
+		return albumFacade.deleteAlbum(albumDTO);
 	}
 		
 }

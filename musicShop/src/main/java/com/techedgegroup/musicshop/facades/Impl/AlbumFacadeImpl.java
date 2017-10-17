@@ -3,15 +3,21 @@ package com.techedgegroup.musicshop.facades.Impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import com.techedgegroup.musicshop.DAO.AlbumBasketDAO;
 import com.techedgegroup.musicshop.DAO.AlbumDAO;
+import com.techedgegroup.musicshop.DAO.AlbumMusicDAO;
 import com.techedgegroup.musicshop.DTO.AlbumCriteriaDTO;
 import com.techedgegroup.musicshop.DTO.AlbumDTO;
 import com.techedgegroup.musicshop.entities.Album;
+import com.techedgegroup.musicshop.entities.AlbumBasket;
+import com.techedgegroup.musicshop.entities.AlbumMusic;
 import com.techedgegroup.musicshop.facades.AlbumFacade;
 
 @Service
@@ -19,6 +25,12 @@ public class AlbumFacadeImpl implements AlbumFacade {
 
 	@Autowired
 	private AlbumDAO albumDAO;
+	
+	@Autowired
+	private AlbumBasketDAO albumBasketDAO;
+	
+	@Autowired
+	private AlbumMusicDAO albumMusicDAO;
 	
 	@Override
 	public List<AlbumDTO> getAlbumList() {
@@ -56,6 +68,104 @@ public class AlbumFacadeImpl implements AlbumFacade {
 		}
 	}
 
+	@Override
+	public String createAlbum(AlbumDTO albumDTO) {
 		
+		Album album = new Album();
+		
+		if(StringUtils.isEmpty(albumDTO.getName_album())) {
+			return "Name can not be empty!";
+		}
+		
+		if(StringUtils.isEmpty(albumDTO.getPublisher())) {
+			return "Publisher can not be empty!";
+		}
+		
+		if(StringUtils.isEmpty(albumDTO.getStyle())) {
+			return "Style can not be empty!";
+		}
+		
+		if(StringUtils.isEmpty(albumDTO.getYear())) {
+			return "Year can not be empty!";
+		}
+		
+		BeanUtils.copyProperties(albumDTO, album);
+		
+		try {
+		album = albumDAO.save(album);
+		
+		}catch (Exception e) {
+			return "Album not inserted "+e;
+		}
+		return "Album inserted";
+	}
+
+	@Override
+	public String updateAlbum(AlbumDTO albumDTO) {
+		
+		if(StringUtils.isEmpty(albumDTO.getId())) {
+			return "Id can not be empty!";
+		}
+		
+		if(StringUtils.isEmpty(albumDTO.getName_album())) {
+			return "Name can not be empty!";
+		}
+		
+		if(StringUtils.isEmpty(albumDTO.getPublisher())) {
+			return "Publisher can not be empty!";
+		}
+		
+		if(StringUtils.isEmpty(albumDTO.getStyle())) {
+			return "Style can not be empty!";
+		}
+		
+		if(StringUtils.isEmpty(albumDTO.getYear())) {
+			return "Year can not be empty!";
+		}
+		
+		try {
+		Album album = albumDAO.findById(albumDTO.getId());
+		
+		BeanUtils.copyProperties(albumDTO, album);
+		
+		album = albumDAO.save(album);
+		
+		}catch (Exception e) {
+			return "Album not updated "+e;
+		}
+		return "Album updated!";
+	}
+
+	@Override
+	public String deleteAlbum(AlbumDTO albumDTO) {
+		
+		if(StringUtils.isEmpty(albumDTO.getId())) {
+			return "Id can not be empty!";
+		}
+		
+		int idAlbum = albumDTO.getId();
+		List<AlbumBasket> albumBasket = (List<AlbumBasket>)albumBasketDAO.findAll();
+		List<AlbumMusic> albumMusic = (List<AlbumMusic>)albumMusicDAO.findAll();
+		
+		for(AlbumBasket ab: albumBasket) {
+			if(ab.getAlbum().getId_album().equals(idAlbum)) {
+				return "This album can not be deleted. This album is in some basket";
+			}
+		}
+		
+		for(AlbumMusic am: albumMusic) {
+			if(am.getAlbum().getId_album().equals(idAlbum)) {
+				return "This album can not be deleted. Some musics are in this album";
+			}
+		}
+		
+		try {
+			albumDAO.delete(idAlbum);
+		}catch (Exception e) {
+			return "Album not deleted!";
+		}
+						
+		return "Album "+albumDTO.getName_album()+" succefuly deleted!";
+	}
 
 }

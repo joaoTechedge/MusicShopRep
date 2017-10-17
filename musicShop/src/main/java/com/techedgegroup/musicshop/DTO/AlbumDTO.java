@@ -27,11 +27,11 @@ public class AlbumDTO implements Serializable {
 
 	private List<AlbumMusicDTO> listOfAlbumMusic;
 
-	public Integer getId_album() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId_album(Integer id_album) {
-		this.id = id_album;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public String getName_album() {
 		return name_album;
@@ -67,7 +67,7 @@ public class AlbumDTO implements Serializable {
 	public AlbumDTO convertFromEntity(Album albumEntity) {
 		
 		AlbumDTO converted = new AlbumDTO();
-		converted.setId_album(albumEntity.getId_album());
+		converted.setId(albumEntity.getId_album());
 		
 		
 		List<AlbumMusicDTO> convertedAlbumMusic = new ArrayList<>();
@@ -88,4 +88,5 @@ public class AlbumDTO implements Serializable {
 		
 		return converted;
 	}
+	
 }

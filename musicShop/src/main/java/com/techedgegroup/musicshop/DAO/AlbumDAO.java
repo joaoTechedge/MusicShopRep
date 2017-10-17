@@ -17,4 +17,5 @@ public interface AlbumDAO extends CrudRepository<Album, Integer>, AlbumDAOCustom
 	
 	@Query("select a from Album a where (a.name_album like :searchText or a.style like :searchText or a.publisher like :searchText or a.year like :searchText)")
 	List<Album> getAlbumsFiltered(@Param("searchText")String searchText, Sort sort);
+	
 }
