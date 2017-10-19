@@ -46,7 +46,7 @@
 					</tr>
 				</thead>
 				<tbody ng-repeat="a in ctrl.albuns" ng-controller="RowCtrl"
-					ng-click="toggleRow()" ng-switch on="isSelected()">
+					ng-click="toggleRow()" ng-switch on="isSelected()" >
 					<tr>
 						<td><a href=""><span ng-bind="a.name_album	"></span></a></td>
 						<td><a href=""><span ng-bind="a.publisher"></span></a></td>
