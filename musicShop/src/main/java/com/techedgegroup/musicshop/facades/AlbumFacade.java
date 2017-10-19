@@ -18,5 +18,5 @@ public interface AlbumFacade {
 
 	public String updateAlbum(AlbumDTO albumDTO);
 	
-	public String deleteAlbum(AlbumDTO albumDTO);
+	public String deleteAlbum(int id);
 }

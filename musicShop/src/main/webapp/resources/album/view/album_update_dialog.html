@@ -1,0 +1,31 @@
+<div class="generic-container">
+<div class="modal-header">EDITAR ALBUM</div>
+
+<div class="modal-body">
+<form>
+<div class="form-group">
+  <label for="usr">Nome:</label>
+  <input type="text" class="form-control" id="usr" ng-model="album.name_album" required>
+</div>
+<div class="form-group">
+  <label for="pbs">Editora:</label>
+  <input type="text" class="form-control" id="pbs" ng-model="album.publisher" required>
+</div>
+<div class="form-group">
+  <label for="stl">Estilo:</label>
+  <input type="text" class="form-control" id="stl" ng-model="album.style" required>
+</div>
+<div class="form-group">
+  <label for="yea">Ano:</label>
+  <input type="number" min="1950" max="2100" step="1" class="form-control" id="yea" ng-model="album.year" required>
+</div>
+</form>
+</div>
+
+
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-click="ok(album)">Gravar</button>
+	<button class="btn btn-warning" ng-click="cancel()">Cancelar</button>
+</div>
+
+</div>

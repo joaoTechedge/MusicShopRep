@@ -137,13 +137,13 @@ public class AlbumFacadeImpl implements AlbumFacade {
 	}
 
 	@Override
-	public String deleteAlbum(AlbumDTO albumDTO) {
+	public String deleteAlbum(int id) {
 		
-		if(StringUtils.isEmpty(albumDTO.getId())) {
+		if(StringUtils.isEmpty(id)) {
 			return "Id can not be empty!";
 		}
 		
-		int idAlbum = albumDTO.getId();
+		int idAlbum = id;
 		List<AlbumBasket> albumBasket = (List<AlbumBasket>)albumBasketDAO.findAll();
 		List<AlbumMusic> albumMusic = (List<AlbumMusic>)albumMusicDAO.findAll();
 		
@@ -165,7 +165,7 @@ public class AlbumFacadeImpl implements AlbumFacade {
 			return "Album not deleted!";
 		}
 						
-		return "Album "+albumDTO.getName_album()+" succefuly deleted!";
+		return "Album succefuly deleted!";
 	}
 
 }

@@ -4,7 +4,7 @@
 
 'use strict'
 
-var app = angular.module('musicShop', ['ngRoute']);
+var app = angular.module('musicShop', ['ngRoute', 'ui.bootstrap']);
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -26,5 +26,4 @@ app.config(function($routeProvider) {
 	});
 	
 });
-
 

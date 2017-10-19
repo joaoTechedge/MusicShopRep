@@ -1,10 +1,11 @@
+
 <div class="generic-container" ng-controller="AlbumController as ctrl"
 	data-ng-init="getAlbuns()">
 
-	<!-- NavBar -->
+	<!-- 	NavBar -->
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
-			<!-- Collect the nav links, forms, and other content for toggling -->
+			<!-- 	Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
@@ -17,8 +18,11 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-	<!-- navBar end -->
-
+	<!-- 	navBar end -->
+	<div class="md-padding" id="popupContainer" ng-cloak>
+		<md-button class="md-primary md-raised" ng-click="showDialog()">
+		<a href=""> + </a></md-button>
+	</div>
 	<div class="panel panel-default">
 		<!-- Default panel contents -->
 		<div class="panel-heading">
@@ -41,18 +45,20 @@
 						<th ng-repeat="header in ctrl.headers">{{header}}</th>
 					</tr>
 				</thead>
-				<tbody ng-repeat="a in ctrl.albuns"
-				ng-controller="RowCtrl" 
-                 ng-click="toggleRow()" 
-                 ng-switch on="isSelected()">
+				<tbody ng-repeat="a in ctrl.albuns" ng-controller="RowCtrl"
+					ng-click="toggleRow()" ng-switch on="isSelected()" >
 					<tr>
 						<td><a href=""><span ng-bind="a.name_album	"></span></a></td>
 						<td><a href=""><span ng-bind="a.publisher"></span></a></td>
 						<td><a href=""><span ng-bind="a.style"></span></a></td>
 						<td><a href=""><span ng-bind="a.year"></span></a></td>
+						<td nowrap=nowrap>
+            				<button ng-click="del(a.id)">Apagar</button>
+            				<button ng-click="updateA(a)">Editar</button>
+        				</td>
 					</tr>
 					<tr ng-switch-when="true">
-						<td colspan="4">
+						<td colspan="5">
 							<table class="table table-bordered table-striped">
 								<thead>
 									<tr>
@@ -76,3 +82,7 @@
 		</div>
 	</div>
 </div>
+
+
+
+
