@@ -6,19 +6,20 @@ public class AlbumMusicDTO implements Serializable{
 
 	private static final long serialVersionUID = -6842527008504370099L;
 
-	private Integer id;
+	private Integer id_music;
 	private String name_music;
 	private String style_music;
 	private double duraction;
 	private String publisher;
 	private Integer year;
 	
-	public Integer getId() {
-		return id;
+	public Integer getId_music() {
+		return id_music;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId_music(Integer id_music) {
+		this.id_music = id_music;
 	}
+	
 	public String getName_music() {
 		return name_music;
 	}
@@ -49,6 +50,7 @@ public class AlbumMusicDTO implements Serializable{
 	public void setYear(Integer year) {
 		this.year = year;
 	}
+	
 	
 	
 

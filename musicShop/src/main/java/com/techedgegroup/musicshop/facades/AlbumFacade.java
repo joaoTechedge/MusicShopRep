@@ -10,13 +10,13 @@ import com.techedgegroup.musicshop.DTO.AlbumDTO;
 @Service
 public interface AlbumFacade {
 	
-	public List<AlbumDTO> getAlbumList();
+	public List<AlbumDTO> getAlbumList() throws Exception;
 
-	public List<AlbumDTO> getAlbumListFiltered(AlbumCriteriaDTO dto);
+	public List<AlbumDTO> getAlbumListFiltered(AlbumCriteriaDTO dto) throws Exception;
 	
-	public String createAlbum(AlbumDTO albumDTO);
+	public String createAlbum(AlbumDTO albumDTO) throws Exception;
 
-	public String updateAlbum(AlbumDTO albumDTO);
+	public String updateAlbum(AlbumDTO albumDTO) throws Exception;
 	
-	public String deleteAlbum(int id);
+	public String deleteAlbum(int id) throws Exception;
 }
