@@ -8,11 +8,11 @@ angular.module('musicShop').factory('AlbumService', ['$http', '$q', function($ht
 		fetchAllAlbuns : function () {
 			return $http.get(REST_SERVICE_URI+'/rest/album/getAlbuns')
 			.then(
-					function (response) {
-						return response.data;
+					function successCallback(response) {
+						return response;
 					},
-					function(errResponse){
-						console.log(errResponse);
+					function errorCallback(response){
+						return response;
 					}
 			);
 
@@ -20,9 +20,13 @@ angular.module('musicShop').factory('AlbumService', ['$http', '$q', function($ht
 
 		fetchAllAlbunsOrdered : function(criteria){
 			return $http.post(REST_SERVICE_URI+"/rest/album/getAlbunsFiltered", criteria)
-			.then(function (response) {
-				return response.data;
-			});
+			.then(function successCallback(response) {
+				return response;
+			},
+			function errorCallback(response){
+				return response;
+			}
+			);
 		},
 
 		createAlbum : function (album) {
@@ -34,37 +38,33 @@ angular.module('musicShop').factory('AlbumService', ['$http', '$q', function($ht
 				data: album 
 			}).then(
 					function successCallback(response) { 
-						if (response.data) { 
-							return response.data;
-						}
+						return response;
 					}, 
 					function errorCallback(response) { 
-						console.log(response);
+						return response;
 					}
 			);			
 
 		},
-		
+
 		updateAlbum : function (album) {
 
 			return $http({ 
 				method: 'POST', 
 				url: REST_SERVICE_URI+'/rest/album/updateAlbum', 
 //				headers: {'Content-Type': 'application/json'}, 
-				data: album 
+				data: album
 			}).then(
 					function successCallback(response) { 
-						if (response.data) { 
-							return response.data;
-						}
+						return response;
 					}, 
 					function errorCallback(response) { 
-						console.log(response);
+						return response;
 					}
 			);			
 
 		},
-		
+
 		deleteAlbum : function (id) {
 
 			return $http({ 
@@ -74,16 +74,14 @@ angular.module('musicShop').factory('AlbumService', ['$http', '$q', function($ht
 				data: id 
 			}).then(
 					function successCallback(response) { 
-						if (response.data) { 
-							return response.data;
-						}
+						return response;
 					}, 
 					function errorCallback(response) { 
-						console.log(response);
+						return response;
 					}
 			);			
 
 		}
-		
+
 	}
 }]);
