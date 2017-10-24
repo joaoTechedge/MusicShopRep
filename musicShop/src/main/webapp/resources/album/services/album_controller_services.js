@@ -12,7 +12,7 @@ angular.module('musicShop').factory('AlbumService', ['$http', '$q', function($ht
 						return response;
 					},
 					function(errResponse){
-						response;
+						return response;
 					}
 			);
 
@@ -24,7 +24,7 @@ angular.module('musicShop').factory('AlbumService', ['$http', '$q', function($ht
 				return response;
 			},
 			function(errResponse){
-				response;
+				return response;
 			}
 			);
 		},

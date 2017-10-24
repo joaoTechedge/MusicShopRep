@@ -36,13 +36,13 @@ public class AlbumFacadeImpl implements AlbumFacade {
 	@Override
 	public List<AlbumDTO> getAlbumList() throws Exception{
 		try {
-		List<Album> albumEntitys = (List<Album>) albumDAO.findAll();
-		List<AlbumDTO> dto = new ArrayList<>();
-		for(Album alb : albumEntitys) {
-			AlbumDTO temp = new AlbumDTO().convertFromEntity(alb);
-			dto.add(temp);
-		}
-		return dto;
+			List<Album> albumEntitys = (List<Album>) albumDAO.findAll();
+			List<AlbumDTO> dto = new ArrayList<>();
+			for(Album alb : albumEntitys) {
+				AlbumDTO temp = new AlbumDTO().convertFromEntity(alb);
+				dto.add(temp);
+			}
+			return dto;
 		}catch (Exception e) {
 			throw new Exception();
 		}
@@ -51,19 +51,19 @@ public class AlbumFacadeImpl implements AlbumFacade {
 	@Override
 	public List<AlbumDTO> getAlbumListFiltered(AlbumCriteriaDTO criteria) throws Exception {
 		try {
-		Sort sort = getSort(criteria.getColumnName(), criteria.getDirection());
-		criteria.setTextToSearch(criteria.getTextToSearch() != null ? "%"+criteria.getTextToSearch()+"%" : "%");
-		List<Album> albumEntitys = (List<Album>) albumDAO.getAlbumsFiltered(criteria.getTextToSearch(),sort);
-		List<AlbumDTO> dto = new ArrayList<>();
-		for(Album alb : albumEntitys) {
-			AlbumDTO temp = new AlbumDTO().convertFromEntity(alb);
-			dto.add(temp);
-		}
-		return dto;
+			Sort sort = getSort(criteria.getColumnName(), criteria.getDirection());
+			criteria.setTextToSearch(criteria.getTextToSearch() != null ? "%"+criteria.getTextToSearch()+"%" : "%");
+			List<Album> albumEntitys = (List<Album>) albumDAO.getAlbumsFiltered(criteria.getTextToSearch(),sort);
+			List<AlbumDTO> dto = new ArrayList<>();
+			for(Album alb : albumEntitys) {
+				AlbumDTO temp = new AlbumDTO().convertFromEntity(alb);
+				dto.add(temp);
+			}
+			return dto;
 		}catch (Exception e) {
 			throw new Exception();
 		}
-		
+
 	}
 
 	private Sort getSort(String columnName, String orderDir) {
