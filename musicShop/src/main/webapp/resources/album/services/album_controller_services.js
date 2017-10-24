@@ -8,10 +8,10 @@ angular.module('musicShop').factory('AlbumService', ['$http', '$q', function($ht
 		fetchAllAlbuns : function () {
 			return $http.get(REST_SERVICE_URI+'/rest/album/getAlbuns')
 			.then(
-					function (response) {
+					function successCallback(response) {
 						return response;
 					},
-					function(errResponse){
+					function errorCallback(response){
 						return response;
 					}
 			);
@@ -20,10 +20,10 @@ angular.module('musicShop').factory('AlbumService', ['$http', '$q', function($ht
 
 		fetchAllAlbunsOrdered : function(criteria){
 			return $http.post(REST_SERVICE_URI+"/rest/album/getAlbunsFiltered", criteria)
-			.then(function (response) {
+			.then(function successCallback(response) {
 				return response;
 			},
-			function(errResponse){
+			function errorCallback(response){
 				return response;
 			}
 			);
