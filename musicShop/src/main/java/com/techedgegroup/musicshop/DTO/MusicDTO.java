@@ -25,11 +25,11 @@ public class MusicDTO implements Serializable {
 	private List<MusicStarDTO> listOfMusicStar;
 
 
-	public Integer getId_music() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId_music(Integer id_music) {
-		this.id = id_music;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public String getName_music() {
 		return name_music;
@@ -78,7 +78,7 @@ public class MusicDTO implements Serializable {
 		
 		MusicDTO converted = new MusicDTO();
 		converted.setDuraction(musicEntity.getDuraction());
-		converted.setId_music(musicEntity.getId_music());
+		converted.setId(musicEntity.getId_music());
 		List<AlbumMusicDTO> convertedAlbumMusic = new ArrayList<>();
 		for(AlbumMusic alb : musicEntity.getListOfAlbumMusic()) {
 			AlbumMusicDTO albDTO = new AlbumMusicDTO();

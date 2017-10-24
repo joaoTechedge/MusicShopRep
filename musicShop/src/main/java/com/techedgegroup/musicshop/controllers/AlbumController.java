@@ -21,30 +21,40 @@ public class AlbumController {
 
 	@Autowired
 	AlbumFacade albumFacade;
-	
+
 	@RequestMapping(value="/getAlbuns",  method=RequestMethod.GET)	
-	public List<AlbumDTO> listaAlbum(){
-		return albumFacade.getAlbumList();
-	}
-	
-	@RequestMapping(value="/getAlbunsFiltered",  method=RequestMethod.POST)	
-	public List<AlbumDTO> listaAlbumFiltered(@RequestBody AlbumCriteriaDTO dto){
-		return albumFacade.getAlbumListFiltered(dto);
-	}
-	
-	@RequestMapping(value="/createAlbum",  method=RequestMethod.POST, produces="text/plain")
-	public String createAlbum(@RequestBody AlbumDTO albumDTO) {
-		return albumFacade.createAlbum(albumDTO);
-	}
-	
-	@RequestMapping(value="/updateAlbum",  method=RequestMethod.POST, produces="text/plain")
-	public String updateAlbum(@RequestBody AlbumDTO albumDTO) {
-		return albumFacade.updateAlbum(albumDTO);
-	}
-	
-	@RequestMapping(value="/deleteAlbum",  method=RequestMethod.POST, produces="text/plain")
-	public String deleteAlbum(@RequestBody int id) {
-		return albumFacade.deleteAlbum(id);
-	}
+	public ResponseEntity<List<AlbumDTO>> listaAlbum() throws Exception{
 		
+		ResponseEntity<List<AlbumDTO>> result = new ResponseEntity<>(albumFacade.getAlbumList(), HttpStatus.OK) ;
+		return result;
+	}
+
+	@RequestMapping(value="/getAlbunsFiltered",  method=RequestMethod.POST)	
+	public ResponseEntity<List<AlbumDTO>>  listaAlbumFiltered(@RequestBody AlbumCriteriaDTO dto) throws Exception{
+		
+		ResponseEntity<List<AlbumDTO>> result = new ResponseEntity<>(albumFacade.getAlbumListFiltered(dto), HttpStatus.OK) ;
+		return result;
+	}
+
+	@RequestMapping(value="/createAlbum",  method=RequestMethod.POST, produces="text/plain")
+	public ResponseEntity<String> createAlbum(@RequestBody AlbumDTO albumDTO) throws Exception{
+		
+		ResponseEntity<String> result = new ResponseEntity<>(albumFacade.createAlbum(albumDTO), HttpStatus.OK);
+		return result;
+	}
+
+	@RequestMapping(value="/updateAlbum",  method=RequestMethod.POST, produces="text/plain")
+	public ResponseEntity<String> updateAlbum(@RequestBody AlbumDTO albumDTO) throws Exception {
+
+		ResponseEntity<String> result = new ResponseEntity<>(albumFacade.updateAlbum(albumDTO), HttpStatus.OK);
+		return result;
+	}
+
+	@RequestMapping(value="/deleteAlbum",  method=RequestMethod.POST, produces="text/plain")
+	public ResponseEntity<String> deleteAlbum(@RequestBody int id) throws Exception{
+		
+		ResponseEntity<String> result = new ResponseEntity<>(albumFacade.deleteAlbum(id), HttpStatus.OK);
+		return result;
+	}
+
 }

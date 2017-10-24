@@ -6,3 +6,12 @@
 	font-weight: bold;
 }
 
+.scrollPane{
+  height:150px;
+  overflow-y:scroll;
+  width:100%;
+}
+
+.toRight{
+	text-align: right;
+}

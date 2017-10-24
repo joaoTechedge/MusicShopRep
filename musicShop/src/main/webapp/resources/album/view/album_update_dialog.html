@@ -5,20 +5,45 @@
 <form>
 <div class="form-group">
   <label for="usr">Nome:</label>
-  <input type="text" class="form-control" id="usr" ng-model="album.name_album" required>
+  <input type="text" class="form-control" id="usr" ng-model="albumCopy.name_album" required>
 </div>
 <div class="form-group">
   <label for="pbs">Editora:</label>
-  <input type="text" class="form-control" id="pbs" ng-model="album.publisher" required>
+  <input type="text" class="form-control" id="pbs" ng-model="albumCopy.publisher" required>
 </div>
 <div class="form-group">
   <label for="stl">Estilo:</label>
-  <input type="text" class="form-control" id="stl" ng-model="album.style" required>
+  <input type="text" class="form-control" id="stl" ng-model="albumCopy.style" required>
 </div>
 <div class="form-group">
   <label for="yea">Ano:</label>
-  <input type="number" min="1950" max="2100" step="1" class="form-control" id="yea" ng-model="album.year" required>
+  <input type="number" min="1950" max="2100" step="1" class="form-control" id="yea" ng-model="albumCopy.year" required>
 </div>
+<div class="form-group">
+  <label for="yea">Musicas:</label>
+</div>
+	<div class="scrollPane">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th ng-repeat="headermus in header">{{headermus}}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="m in albumCopy.listOfAlbumMusic">
+							<td><span ng-bind="m.name_music"></span></td>
+							<td><span ng-bind="m.publisher"></span></td>
+							<td><span ng-bind="m.style_music"></span></td>
+							<td><span ng-bind="m.year"></span></td>
+							<td><span ng-bind="m.duraction"></span></td>
+							<td nowrap=nowrap>
+								<button ng-click="delalbmus($index)">Apagar</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
 </form>
 </div>
 
