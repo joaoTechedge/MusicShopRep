@@ -12,6 +12,12 @@
 	width: 100%;
 }
 
+.scrollPanel {
+	height: 500px;
+	overflow-y: scroll;
+}
+
+
 .toRight {
 	text-align: right;
 }

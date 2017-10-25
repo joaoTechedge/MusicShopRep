@@ -18,8 +18,9 @@ angular.module('musicShop').controller('AlbumController', ['$http', '$scope', '$
 	self.responseAlbum;
 	self.openMessage;
 	$scope.message;
-
-
+	$scope.message;
+	self.message="";
+	
 	$scope.getAlbuns = function(){
 		AlbumService.fetchAllAlbuns()
 		.then(function(response){
@@ -44,28 +45,34 @@ angular.module('musicShop').controller('AlbumController', ['$http', '$scope', '$
 
 
 	$scope.createAlbum = function() {
+		
 		var modalInstance = $uibModal.open({
 			templateUrl: 'resources/album/view/album_create_dialog.html',
-			controller: this.ModalInstanceCtrls
+			controller: this.ModalInstanceCtrls			
 		});
 	};
 
 	$scope.ModalInstanceCtrls = function($scope, $uibModalInstance) {
-		$scope.ok = function(album) {
+			$scope.ok = function(album) {
 			AlbumService.createAlbum(album)
 			.then(function(data){
 				if(data.status != 200){
-					$scope.message="Album não inserido!";
 					$uibModalInstance.close();
+					self.message = "Album não inserido!";
+				
+//					$scope.messageAErr= messageAErr;
+					
+					
+				
 
-					self.openMessage = $uibModal.open({
-						templateUrl: 'resources/album/view/showMessageErr.html',
-						controller: $uibModal.ModalInstanceCtrlMes,
-						resolve: {
-							message: function(){
-								return $scope.message;
-							}}
-					});
+//					self.openMessage = $uibModal.open({
+//						templateUrl: 'resources/album/view/showMessageErr.html',
+//						controller: $uibModal.ModalInstanceCtrlMes,
+//						resolve: {
+//							message: function(){
+//								return $scope.message;
+//							}}
+//					});
 
 
 				}else{	
@@ -97,15 +104,16 @@ angular.module('musicShop').controller('AlbumController', ['$http', '$scope', '$
 		AlbumService.deleteAlbum(id)
 		.then(function(data){
 			if(data.status != 200){
-				$scope.message="Album não apagado";
-				self.openMessage = $uibModal.open({
-					templateUrl: 'resources/album/view/showMessageErr.html',
-					controller: $uibModal.ModalInstanceCtrlMes,
-					resolve: {
-						message: function(){
-							return $scope.message;
-						}}
-				});
+				self.message = "Album não apagado!";
+//				$scope.message="Album não apagado";
+//				self.openMessage = $uibModal.open({
+//					templateUrl: 'resources/album/view/showMessageErr.html',
+//					controller: $uibModal.ModalInstanceCtrlMes,
+//					resolve: {
+//						message: function(){
+//							return $scope.message;
+//						}}
+//				});
 			}else{
 				$scope.message="Album apagado";
 				self.openMessage = $uibModal.open({
@@ -150,15 +158,16 @@ angular.module('musicShop').controller('AlbumController', ['$http', '$scope', '$
 			.then(function(data){
 				if(data.status != 200){
 					$uibModalInstance.close();
-					$scope.message="Album não editado";
-					self.openMessage = $uibModal.open({
-						templateUrl: 'resources/album/view/showMessageErr.html',
-						controller: $uibModal.ModalInstanceCtrlMes,
-						resolve: {
-							message: function(){
-								return $scope.message;
-							}}
-					});
+					self.message = "Album não editado!";
+//					$scope.message="Album não editado";
+//					self.openMessage = $uibModal.open({
+//						templateUrl: 'resources/album/view/showMessageErr.html',
+//						controller: $uibModal.ModalInstanceCtrlMes,
+//						resolve: {
+//							message: function(){
+//								return $scope.message;
+//							}}
+//					});
 				} else{
 					$scope.album.id=$scope.albumCopy.id;
 					$scope.album.name_album=$scope.albumCopy.name_album;
@@ -169,7 +178,8 @@ angular.module('musicShop').controller('AlbumController', ['$http', '$scope', '$
 
 					for(var i=0; i<$scope.albumCopy.listOfAlbumMusic.length; i++) {
 						$scope.album.listOfAlbumMusic[i]=$scope.albumCopy.listOfAlbumMusic[i];
-					}				
+					}	
+					
 					$scope.message="Album editado";
 					$uibModalInstance.close();
 					self.openMessage = $uibModal.open({
@@ -202,6 +212,7 @@ angular.module('musicShop').controller('AlbumController', ['$http', '$scope', '$
 		};
 
 	};
+	
 
 }]);
 
@@ -215,6 +226,5 @@ angular.module('musicShop').controller('RowCtrl', function ($scope) {
 		return $scope.selected;
 	};
 });
-
 
 
