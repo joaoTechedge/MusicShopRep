@@ -1,28 +1,41 @@
+<div class="generic-container">
 <div class="modal-header">INSERIR NOVO ALBUM</div>
 
 <div class="modal-body">
-<form>
-<div class="form-group">
-  <label for="usr">Nome:</label>
-  <input type="text" class="form-control" id="usr" ng-model="album.name_album">
-</div>
-<div class="form-group">
-  <label for="pbs">Editora:</label>
-  <input type="text" class="form-control" id="pbs" ng-model="album.publisher">
-</div>
-<div class="form-group">
-  <label for="stl">Estilo:</label>
-  <input type="text" class="form-control" id="stl" ng-model="album.style">
-</div>
-<div class="form-group">
-  <label for="yea">Ano:</label>
-  <input type="number" min="1950" max="2100" step="1" class="form-control" id="yea" ng-model="album.year">
-</div>
-</form>
+	<form name="album" novalidate>
+		<div class="form-group" ng-class="{ 'has-error' : album.alb.$invalid && album.alb.$dirty}">
+			<label for="alb">Nome:</label>
+			<input type="text" name="alb" class="form-control" id="alb" ng-model="album.name_album"
+				ng-minlength="3" ng-maxlength="30" required>
+			<p ng-show="album.alb.$error.minlength" class="help-block">Conteudo insuficiente!</p>
+			<p ng-show="album.alb.$error.maxlength" class="help-block">Demasiado conteudo!</p>
+		</div>
+		<div class="form-group" ng-class="{ 'has-error' : album.pbs.$invalid && album.pbs.$dirty}">
+			<label for="pbs">Editora:</label>
+			<input type="text" name="pbs" class="form-control" id="pbs" ng-model="album.publisher"
+				ng-minlength="3" ng-maxlength="15" required>
+			<p ng-show="album.pbs.$error.minlength" class="help-block">Conteudo insuficiente!</p>
+			<p ng-show="album.pbs.$error.maxlength" class="help-block">Demasiado conteudo!</p>
+		</div>
+		<div class="form-group" ng-class="{ 'has-error' : album.stl.$invalid && album.stl.$dirty}">
+			<label for="stl">Estilo:</label>
+			<input type="text" name="stl" class="form-control" id="stl" ng-model="album.style"
+				ng-minlength="3" ng-maxlength="15" required>
+			<p ng-show="album.stl.$error.minlength" class="help-block">Conteudo insuficiente!</p>
+			<p ng-show="album.stl.$error.maxlength" class="help-block">Demasiado conteudo!</p>
+		</div>
+		<div class="form-group" ng-class="{ 'has-error' : album.yea.$invalid && album.yea.$dirty}">
+			<label for="yea">Ano:</label>
+			<input type="text"  name="yea" class="form-control" id="yea" ng-pattern="/^[0-9]*$/"
+				ng-model="album.year" ng-minlength="4" ng-maxlength="4" required>
+			<p ng-show="album.yea.$invalid && album.yea.$dirty" class="help-block">Ano com quatro digitos!</p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary" type="submit" ng-disabled="album.$invalid" ng-click="ok(album)">Gravar</button>
+			<button class="btn btn-warning" ng-click="cancel()">Cancelar</button>
+		</div>
+	</form>
 </div>
 
 
-<div class="modal-footer">
-	<button class="btn btn-primary" ng-click="ok(album)">Gravar</button>
-	<button class="btn btn-warning" ng-click="cancel()">Cancelar</button>
 </div>
